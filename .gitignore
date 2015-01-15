@@ -1,7 +1,7 @@
 .vagrant
-/cookbooks
+Berksfile.lock
+Gemfile.lock
 
-# Bundler
 bin/*
 .bundle/*
 

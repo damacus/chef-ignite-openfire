@@ -1,3 +1,6 @@
+THIS IS A -UP FROM https://github.com/greenmoss/openfire-chef
+===============================================================
+
 Description
 ===========
 

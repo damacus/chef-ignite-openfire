@@ -31,3 +31,10 @@ suites:
             type: 'postgresql'
             password: 'anotherpassword'
 
+  - name: embedded_db
+    run_list: openfire::default
+    attributes:
+      openfire:
+
+
+

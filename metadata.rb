@@ -1,3 +1,4 @@
+name             "openfire"
 maintainer       "Gavin Montague"
 maintainer_email "gavin@leftbrained.co.uk"
 license          "Apache 2.0"

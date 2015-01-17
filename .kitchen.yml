@@ -36,5 +36,8 @@ suites:
     attributes:
       openfire:
 
-
+  - name: package
+    run_list: openfire::package
+    attributes:
+      openfire:
 

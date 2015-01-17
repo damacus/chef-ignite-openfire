@@ -27,11 +27,3 @@ template '/etc/openfire/openfire.xml' do
   notifies :restart, "service[openfire]"
 end
 
-openfire_plugin "meetings" do
- source "http://www.igniterealtime.org/projects/openfire/plugins/ofmeet.jar"
-end
-
-openfire_plugin "monitoring" do
- source "http://www.igniterealtime.org/projects/openfire/plugins/monitoring.jar"
-end
-

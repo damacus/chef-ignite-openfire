@@ -1,7 +1,7 @@
 include_recipe "java"
 
 case node['platform_family']
-when 'rhel'
+when 'rhel', 'suse'
   source_file = "openfire/openfire-#{node['openfire']['version']}-1.i386.rpm"
   local_package_path = "#{Chef::Config['file_cache_path']}/openfire.rpm"
 when 'debian'
@@ -14,9 +14,18 @@ remote_file local_package_path do
   source "http://www.igniterealtime.org/downloadServlet?filename=#{source_file}"
 end
 
-dpkg_package 'openfire' do
-  source local_package_path 
+case node['platform_family']
+when 'rhel', 'suse'
+  rpm_package 'openfire' do
+    source local_package_path 
+  end
+when 'debian'
+  dpkg_package 'openfire' do
+    source local_package_path 
+  end
 end
+
+
 
 service 'openfire'
 

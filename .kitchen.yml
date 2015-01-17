@@ -11,10 +11,12 @@ provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-12.04
+  - name: ubuntu-14.04
+    run_list: apt
   - name: debian-7.7
     run_list: apt
   - name: centos-6.4
+#  - name: fedora-20
 
 suites:
   - name: default

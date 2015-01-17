@@ -3,11 +3,11 @@
 <!-- root element, all properties must be under this element -->
 <jive>
   <adminConsole>
-    <port><%= node[:openfire][:config][:admin_console][:port] %></port>
-    <securePort><%= node[:openfire][:config][:admin_console][:secure_port] %></securePort>
+    <port><%= node['openfire']['config']['admin_console']['port'] %></port>
+    <securePort><%= node['openfire']['config']['admin_console']['secure_port'] %></securePort>
   </adminConsole>
-  <locale><%= node[:openfire][:config][:locale] %></locale>
-<% unless node[:openfire][:config][:network][:interface].nil? %>
+  <locale><%= node['openfire']['config']['locale'] %></locale>
+<% unless node['openfire']['config']['network']['interface'].nil? %>
   <!--
     Network settings. By default, Openfire will bind to all network interfaces.
     Alternatively, you can specify a specific network interfaces that the server
@@ -15,19 +15,19 @@
     on multi-homed servers.
    -->
   <network>
-    <interface><%= node[:openfire][:config][:network][:interface] %></interface>
+    <interface><%= node['openfire']['config']['network']['interface'] %></interface>
   </network>
 <% end %>
-<% if node[:openfire][:database][:active] %>
+<% if node['openfire']['database']['active'] %>
   <connectionProvider>
     <className>org.jivesoftware.database.DefaultConnectionProvider</className>
   </connectionProvider>
   <database>
     <defaultProvider>
-      <driver><%= node[:openfire][:config][:database][:driver] %></driver>
-      <serverURL><%= node[:openfire][:config][:database][:server_url] %></serverURL>
-      <username><%= node[:openfire][:database][:user] %></username>
-      <password><%= node[:openfire][:database][:password] %></password>
+      <driver><%= node['openfire']['config']['database']['driver'] %></driver>
+      <serverURL><%= node['openfire']['config']['database']['server_url'] %></serverURL>
+      <username><%= node['openfire']['database']['user'] %></username>
+      <password><%= node['openfire']['database']['password'] %></password>
       <testSQL>select 1</testSQL>
       <testBeforeUse>true</testBeforeUse>
       <testAfterUse>true</testAfterUse>

@@ -36,5 +36,10 @@
       <connectionTimeout>1.0</connectionTimeout>
     </defaultProvider>
   </database>
+<% else %>
+  <connectionProvider>
+    <className>org.jivesoftware.database.EmbeddedConnectionProvider</className>
+  </connectionProvider>
 <% end %>
+  <setup>true</setup>
 </jive>

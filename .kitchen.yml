@@ -5,11 +5,7 @@ driver:
     forwarded_port:
       guest: 9090
       host: 9090
-  network:
-    forwarded_port:
-      guest: 9091
-      host: 9091
-
+      auto_correct: true
 
 provisioner:
   name: chef_solo
@@ -17,6 +13,7 @@ provisioner:
 platforms:
   - name: ubuntu-12.04
   - name: debian-7.7
+    run_list: apt
   - name: centos-6.4
 
 suites:

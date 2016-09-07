@@ -10,17 +10,23 @@ driver:
 provisioner:
   name: chef_solo
 
+verifier:
+  name: inspec
+
 platforms:
   - name: ubuntu-14.04
     run_list: apt
   - name: debian-7.7
     run_list: apt
   - name: centos-6.4
-#  - name: fedora-20
+    run_list:
+      # - recipe[openfire::default]
 
 suites:
   - name: default
-    run_list: openfire::default
+    run_list:
+      - recipe[openfire::default]
+      - recipe[kitchen_sudoers::default]
     attributes:
       postgresql:
         password:
@@ -31,12 +37,15 @@ suites:
             password: 'anotherpassword'
 
   - name: embedded_db
-    run_list: openfire::default
+    run_list:
+      - recipe[openfire::default]
+      - recipe[kitchen_sudoers::default]
     attributes:
       openfire:
 
   - name: package
-    run_list: openfire::package
+    run_list:
+      - recipe[openfire::default]
+      - recipe[kitchen_sudoers::default]
     attributes:
       openfire:
-

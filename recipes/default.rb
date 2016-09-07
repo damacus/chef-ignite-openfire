@@ -15,7 +15,7 @@ user node['openfire']['user'] do
   shell '/bin/sh'
 end
 
-local_tarball_path = "#{Chef:'config'['file_cache_path']}/#{node['openfire']['source_tarball']}"
+local_tarball_path = "#{Chef::Config['file_cache_path']}/#{node['openfire']['source_tarball']}"
 
 remote_file local_tarball_path do
   checksum node['openfire']['source_checksum']
@@ -33,6 +33,7 @@ bash "install_openfire" do
     mv #{node['openfire']['home_dir']}/resources/security /etc/openfire
   EOH
   creates node['openfire']['home_dir']
+  #TODO add guard
 end
 
 # link to LSB-recommended directories
@@ -47,6 +48,12 @@ end
 link "#{node['openfire']['home_dir']}/resources/security" do
   to '/etc/openfire/security'
 end
+
+# %w{conf logs}.each do |l|
+#   link "#{node['openfire']['home_dir']}/l" do
+#     to node['openfire']["#{l}_dir"]
+#   end
+# end
 
 # this directory contains keys, so lock down its permissions
 directory '/etc/openfire/security' do
@@ -78,7 +85,7 @@ template '/etc/sysconfig/openfire' do
 end
 
 service "openfire" do
-  supports :status => true, 
+  supports :status => true,
            :stop => true
   action [ :enable, :start ]
 end

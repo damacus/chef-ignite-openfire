@@ -26,6 +26,6 @@ default['openfire']['config']['admin_console']['secure_port'] = 9091
 default['openfire']['config']['locale'] = 'en'
 default['openfire']['config']['network']['interface'] = nil
 
-default['openfire']['conf_dir']
-default['openfire']['log_dir']
-default['openfire']['security_dir']
+default['openfire']['conf_dir'] = '/etc/openfire'
+default['openfire']['log_dir'] = '/var/log/openfire'
+# default['openfire']['security_dir'] = ''

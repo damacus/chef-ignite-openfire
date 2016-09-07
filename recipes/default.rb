@@ -37,23 +37,15 @@ bash "install_openfire" do
 end
 
 # link to LSB-recommended directories
-link "#{node['openfire']['home_dir']}/conf" do
-  to '/etc/openfire'
-end
-
-link "#{node['openfire']['home_dir']}/logs" do
-  to '/var/log/openfire'
-end
-
 link "#{node['openfire']['home_dir']}/resources/security" do
   to '/etc/openfire/security'
 end
 
-# %w{conf logs}.each do |l|
-#   link "#{node['openfire']['home_dir']}/l" do
-#     to node['openfire']["#{l}_dir"]
-#   end
-# end
+%w{conf logs}.each do |l|
+  link "#{node['openfire']['home_dir']}/l" do
+    to node['openfire']["#{l}_dir"]
+  end
+end
 
 # this directory contains keys, so lock down its permissions
 directory '/etc/openfire/security' do

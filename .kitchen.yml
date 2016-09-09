@@ -15,14 +15,16 @@ verifier:
 
 platforms:
   - name: centos-6
-    run_list:
-      - recipe[kitchen_sudoers::default]
   - name: centos-7
-    run_list:
-      - recipe[kitchen_sudoers::default]
   - name: windows-2012r2
 
 suites:
-  - name: default
+  - name: windows
     run_list:
       - recipe[openfire::default]
+    includes: windows-2012r2
+  - name: centos
+    run_list:
+      - recipe[openfire::default]
+      - recipe[kitchen_sudoers::default]
+    includes: [centos-6, centos-7]

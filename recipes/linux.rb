@@ -12,7 +12,6 @@ when 'debian'
   source_file = "openfire/openfire_#{version}_all.deb"
   local_package_path = "#{Chef::Config['file_cache_path']}/openfire.deb"
   platform_checksum = node['openfire']['checksum'][version]['deb']
-  platform_provider = Chef::Provider::Package::Dpkg
 when 'windows'
   source_file = "openfire/openfire_#{version_windows}.exe"
   local_package_path = "#{Chef::Config['file_cache_path']}/openfire.exe"

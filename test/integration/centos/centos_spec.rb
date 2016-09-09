@@ -7,7 +7,7 @@ describe file('/etc/sysconfig') do
 end
 
 describe file('/etc/sysconfig/openfire') do
-  its(:content) { should match ("/opt/openfire/logs") }
+  its(:content) { should match '/opt/openfire/logs' }
 end
 
 describe service('openfire') do

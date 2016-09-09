@@ -1,9 +1,9 @@
 node.default['openfire']['base_dir'] = 'C:\Program Files (x86)\Openfire'
-node.default['openfire']['home_dir'] = "#{node['openfire']['base_dir']}"
+node.default['openfire']['home_dir'] = (node['openfire']['base_dir']).to_s
 node.default['openfire']['log_dir']  = "#{node['openfire']['base_dir']}\logs"
 
 version = node['openfire']['version'].to_s
-version_windows = version.gsub('.','_')
+version_windows = version.tr('.', '_')
 
 source_file = "openfire/openfire_#{version_windows}.exe"
 local_package_path = "#{Chef::Config['file_cache_path']}/openfire.exe"

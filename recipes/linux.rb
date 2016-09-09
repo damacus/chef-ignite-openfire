@@ -1,7 +1,7 @@
 include_recipe 'chef-sugar'
 
 version = node['openfire']['version'].to_s
-version_windows = version.gsub('.','_')
+version_windows = version.tr('.', '_')
 
 case node['platform_family']
 when 'rhel', 'suse'
@@ -30,7 +30,7 @@ user node['openfire']['user'] do
   group node['openfire']['group']
 end
 
-cookbook_file "/etc/init.d/openfire" do
+cookbook_file '/etc/init.d/openfire' do
   mode '0755'
 end
 
@@ -45,9 +45,7 @@ if ubuntu?
   package 'default-jre-headless'
 end
 
-if rhel?
-  include_recipe 'java'
-end
+include_recipe 'java' if rhel?
 
 template '/etc/sysconfig/openfire' do
   mode '0644'

@@ -1,13 +1,13 @@
-name             'openfire'
-maintainer       'Gavin Montague'
-maintainer_email 'gavin@leftbrained.co.uk'
+name             'ignite-openfire'
+maintainer       'Dan Webb'
+maintainer_email 'dan.webb@damacus.io'
 license          'Apache 2.0'
 description      'Installs Openfire Jabber server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-source_url       'https://github.com/computerlyrik/chef-openfire'
-issues_url       'https://github.com/computerlyrik/chef-openfire/issues'
+source_url       'https://github.com/damacus/chef-openfire'
+issues_url       'https://github.com/damacus/chef-openfire/issues'
 
-version          '0.2.1'
+version          '0.1.0'
 supports         'centos'
 supports         'windows'
 

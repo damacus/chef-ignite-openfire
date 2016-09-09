@@ -1,6 +1,6 @@
-OPENFIRE_USER=<%= node['openfire']['user'] %>
-OPENFIRE_PIDFILE=<%= node['openfire']['pidfile'] %>
-OPENFIRE_HOME=<%= node['openfire']['home_dir'] %>
-OPENFIRE_LOGDIR=<%= node['openfire']['log_dir'] %>
-OPENFIRE_OPTS=<%= node['openfire']['opts'] %>
-JAVA_HOME=<%= node['java']['java_home'] %>
+OPENFIRE_USER=<%= @user %>
+OPENFIRE_PIDFILE=<%= @pid_file %>
+OPENFIRE_HOME=<%= @home_dir %>
+OPENFIRE_LOGDIR=<%= @log_dir %>
+OPENFIRE_OPTS=<%= @options %>
+JAVA_HOME=<%= @java_home %>

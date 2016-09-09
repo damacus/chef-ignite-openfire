@@ -8,10 +8,10 @@ source_url       'https://github.com/computerlyrik/chef-openfire'
 issues_url       'https://github.com/computerlyrik/chef-openfire/issues'
 
 version          "0.2.1"
-supports         "ubuntu"
 supports         "centos"
-supports         "debian"
+supports         'windows'
 
 depends "java"
 depends "database"
 depends "postgresql"
+depends 'chef-sugar'

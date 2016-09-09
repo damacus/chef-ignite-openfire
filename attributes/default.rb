@@ -1,31 +1,13 @@
-default['openfire']['version'] = '3.9.3'
-default['openfire']['source_tarball'] = "openfire_#{openfire['version'].gsub(".","_")}.tar.gz"
+default['java']['jdk_version'] = 7
+default['openfire']['version'] = '4.0.3'
 
-# precalculated checksums: `sha256sum openfire_v_v_v.tar.gz | cut -c1-16`
-checksums = {
-	'openfire_3_8_1.tar.gz' => '554dce3a1b0a0b88',
-	'openfire_3_8_0.tar.gz' => 'd5bef61a313ee41b',
-	'openfire_3_9_3.tar.gz' => '17e636ddcba3caa039076a63914cec22cfbc67b6af2ec0bc7d22082aded539ed'
-}
+default['openfire']['user'] = 'daemon'
+default['openfire']['group'] = 'daemon'
 
-default['openfire']['source_checksum'] = checksums[openfire['source_tarball']]
+default['openfire']['checksum']['4.0.3']['deb'] = '2b34ec323d8aed52802b4f846624b645653a0044d0b9705b64494d0c30c2f71a'
+default['openfire']['checksum']['4.0.3']['rpm'] = 'c76a92cbea5a1ef12552e49362e5cedb068eccdb0f8f7fe7481c3fc23cd29210'
+default['openfire']['checksum']['4.0.3']['exe'] = 'bc860596c3db9bf0472199866244977a53f6d9b30a554195f504ef7b20ddc29d'
 
 default['openfire']['base_dir'] = '/opt'
-default['openfire']['home_dir'] = "#{openfire['base_dir']}/openfire"
-default['openfire']['log_dir'] = '/var/log/openfire'
-
-default['openfire']['user'] = 'openfire'
-default['openfire']['group'] = 'openfire'
-
-default['openfire']['pidfile'] = '/var/run/openfire.pid'
-
-# by default, only enable secure admin port
-default['openfire']['config']['admin_console']['port'] = 9090
-default['openfire']['config']['admin_console']['secure_port'] = 9091
-
-default['openfire']['config']['locale'] = 'en'
-default['openfire']['config']['network']['interface'] = nil
-
-default['openfire']['conf_dir'] = '/etc/openfire'
-default['openfire']['log_dir'] = '/var/log/openfire'
-# default['openfire']['security_dir'] = ''
+default['openfire']['home_dir'] = "#{node['openfire']['base_dir']}/openfire"
+default['openfire']['log_dir']  = "#{node['openfire']['base_dir']}/openfire/logs"

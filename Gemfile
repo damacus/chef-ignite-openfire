@@ -1,5 +1,10 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'berkshelf'
+gem 'rake'
+gem 'foodcritic', '>= 7.0'
+gem 'rubocop', '= 0.39.0'
+gem 'inspec', '>= 0.17.1'
+gem 'kitchen-inspec'
 gem 'test-kitchen'
-gem 'kitchen-vagrant'
+gem 'berkshelf', '~> 4.3.5'
+gem 'stove'

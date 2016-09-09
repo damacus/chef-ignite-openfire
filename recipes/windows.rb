@@ -16,8 +16,7 @@ end
 
 service 'Openfire'
 
-package 'openfire' do
-  provider Chef::Provider::Package::Windows
+windows_package 'openfire' do
   source local_package_path
   installer_type :custom
   options '-q'

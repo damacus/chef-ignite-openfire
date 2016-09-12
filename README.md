@@ -4,7 +4,7 @@ Installs the [Openfire Jabber server](http://www.igniterealtime.org/) from packa
 
 # Supported Platforms
 * CentOS, Red Hat
-* Ubuntu (likely, but untested)
+* Windows (2012r2)
 
 ## Database
 Uses the internal database packaged with Openfire

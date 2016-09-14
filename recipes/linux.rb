@@ -23,10 +23,6 @@ remote_file local_package_path do
   source "http://www.igniterealtime.org/downloadServlet?filename=#{source_file}"
 end
 
-# cookbook_file '/etc/init.d/openfire' do
-#   mode '0755'
-# end
-
 directory node['openfire']['log_dir'] do
   user 'daemon'
   group 'daemon'
@@ -40,6 +36,12 @@ end
 
 include_recipe 'java' if rhel?
 
+package 'openfire' do
+  provider Chef::Provider::Package::Dpkg if debian?
+  source local_package_path
+  notifies :restart, 'service[openfire]', :delayed
+end
+
 template '/etc/sysconfig/openfire' do
   mode '0644'
   source 'openfire.erb'
@@ -52,10 +54,20 @@ template '/etc/sysconfig/openfire' do
   )
 end
 
-package 'openfire' do
-  provider Chef::Provider::Package::Dpkg if debian?
-  source local_package_path
-  notifies :restart, 'service[openfire]', :delayed
+template '/opt/openfire/conf/openfire.xml' do
+  mode '0644'
+  source 'openfire.xml.erb'
+  variables(
+    admin_port: node['openfire']['config']['admin_port'],
+    admin_port_secure: node['openfire']['config']['secure_port'],
+    locale: node['openfire']['config']['locale'],
+    network_interface: node['openfire']['config']['network_interface'],
+    external_db: node['openfire']['config']['database']['type'],
+    db_driver: node['openfire']['config']['database']['driver'],
+    db_connection: node['openfire']['config']['database']['connection'],
+    db_user: node['openfire']['config']['database']['user'],
+    db_password: node['openfire']['config']['database']['password']
+  )
 end
 
 service 'openfire' do

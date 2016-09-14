@@ -12,8 +12,11 @@ end
 
 describe file('/opt/openfire/conf/hazelcast-cache-config.xml') do
   its(:content) { should match '<member>member1.foo.com:5701</member>' }
+  its(:content) { should match '<member>member2.foo.com:5701</member>' }
 end
 
-describe file('/opt/openfire/conf/hazelcast-cache-config.xml') do
-  its(:content) { should match '<member>member2.foo.com:5701</member>' }
+describe file('/opt/openfire/conf/openfire.xml') do
+  its(:content) { should match 'org.jivesoftware.database.EmbeddedConnectionProvider' }
+  its(:content) { should match '9090' }
+  its(:content) { should match '9091' }
 end

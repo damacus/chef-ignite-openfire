@@ -23,12 +23,21 @@ suites:
     run_list:
       - recipe[ignite-openfire::default]
     includes: windows-2012r2
+    
   - name: centos
     run_list:
       - recipe[ignite-openfire::default]
       - recipe[kitchen_sudoers::default]
     includes: [centos-6, centos-7]
+
   - name: plugin-centos
     run_list:
-      - recipe[openfire_plugin_clustering::default]
+      - recipe[openfire-plugin-test::default]
+      - recipe[kitchen_sudoers::default]
+    includes: [centos-6]
+
+  - name: plugin-hazelcast-centos
+    run_list:
+      - recipe[openfire-hazelcast-plugin-test::default]
+      - recipe[kitchen_sudoers::default]
     includes: [centos-6]

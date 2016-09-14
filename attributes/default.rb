@@ -2,8 +2,6 @@
 default['java']['jdk_version'] = 7
 default['openfire']['version'] = '4.0.3'
 
-default['openfire']['user'] = 'daemon'
-default['openfire']['group'] = 'daemon'
 # rubocop:disable LineLength
 default['openfire']['checksum']['4.0.3']['deb'] = '2b34ec323d8aed52802b4f846624b645653a0044d0b9705b64494d0c30c2f71a'
 default['openfire']['checksum']['4.0.3']['rpm'] = 'c76a92cbea5a1ef12552e49362e5cedb068eccdb0f8f7fe7481c3fc23cd29210'

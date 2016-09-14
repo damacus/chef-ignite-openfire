@@ -23,19 +23,13 @@ remote_file local_package_path do
   source "http://www.igniterealtime.org/downloadServlet?filename=#{source_file}"
 end
 
-group node['openfire']['group']
-
-user node['openfire']['user'] do
-  group node['openfire']['group']
-end
-
-cookbook_file '/etc/init.d/openfire' do
-  mode '0755'
-end
+# cookbook_file '/etc/init.d/openfire' do
+#   mode '0755'
+# end
 
 directory node['openfire']['log_dir'] do
-  user node['openfire']['user']
-  group node['openfire']['group']
+  user 'daemon'
+  group 'daemon'
   recursive true
 end
 

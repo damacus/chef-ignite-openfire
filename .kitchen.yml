@@ -19,16 +19,16 @@ platforms:
   - name: windows-2012r2
 
 suites:
-  - name: default
+  - name: win
     run_list:
       - recipe[ignite-openfire::default]
-    includes: [windows-2012r2, centos-6, centos-7]
+    includes: [windows-2012-r2]
 
-  - name: plugin
+  - name: linux
     run_list:
-      - recipe[openfire-plugin-test::default]
+      - recipe[ignite-openfire::default]
       - recipe[kitchen_sudoers::default]
-    includes: [centos-6]
+    includes: [centos-6, centos-7]
 
   - name: plugin-hazelcast
     run_list:

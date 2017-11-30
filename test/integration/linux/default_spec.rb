@@ -19,5 +19,5 @@ describe file('/opt/openfire/conf/openfire.xml') do
 end
 
 describe file('/opt/openfire/conf/openfire.xml') do
-  its(:content){ should match 'org.jivesoftware.database.EmbeddedConnectionProvider' }
+  its(:content) { should match 'org.jivesoftware.database.EmbeddedConnectionProvider' }
 end

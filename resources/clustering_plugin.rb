@@ -10,6 +10,7 @@ property :cluster_members, Array, required: true
 def plugin_filename
   ::File.join(plugin_dir, 'hazelcast.jar')
 end
+
 def hazel_cast_config
   ::File.join(node['openfire']['home_dir'], 'conf', 'hazelcast-cache-config.xml')
 end
@@ -36,20 +37,18 @@ EOH
     action :append_if_missing
   end
 
-
   # Write out the Hazel cast clsutering config
   template hazel_cast_config do
-     user 'daemon'
-     group 'daemon'
-     cookbook 'ignite-openfire'
-     variables(
-       members: cluster_members
-     )
+    user 'daemon'
+    group 'daemon'
+    cookbook 'ignite-openfire'
+    variables(
+      members: cluster_members
+    )
   end
 end
 
 action :remove do
-
   Chef::Log.info("removing #{plugin_filename}")
   file plugin_filename do
     action :delete
